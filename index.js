@@ -1,10 +1,22 @@
-var express = require("express");
-var app = express();
-let port = process.env.PORT || 3000;
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
 
+//database
+mongoose.connect(
+    'mongodb+srv://app-chat-db:app-chat-db@cluster0.5juzv.azure.mongodb.net/chat-db?retryWrites=true&w=majority',
+    {useNewUrlParser: true }
+).then( () => console.log("Connected to database"));
 
-require("./connnect_db.js");
+//middleware
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
-app.listen(port, () => {
-    console.log("Server running");
-});
+//controllers
+var user = require('./UserControll');
+
+//router
+app.use('/api/user', user);
+
+//start server
+app.listen(8000, () => console.log("Server is running on port 8000"));
