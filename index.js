@@ -4,7 +4,7 @@ const app = express();
 
 //database
 mongoose.connect(
-    'mongodb+srv://app-chat-db:app-chat-db@cluster0.5juzv.azure.mongodb.net/chat-db?retryWrites=true&w=majority',
+    'mongodb+srv://app-chat-db:password@cluster0.5juzv.azure.mongodb.net/chat-db?retryWrites=true&w=majority',
     {useNewUrlParser: true }
 ).then( () => console.log("Connected to database"));
 
