@@ -13,9 +13,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 //controllers
+var welcom = require('./WelcomeControll');
 var user = require('./UserControll');
 
 //router
+app.use('', welcom);
 app.use('/api/user', user);
 
 //start server
